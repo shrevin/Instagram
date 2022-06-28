@@ -6,6 +6,7 @@
 //
 
 #import "postCell.h"
+#import "Post.h"
 
 @implementation postCell
 
@@ -18,6 +19,14 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+- (void)setPost:(Post *)post {
+    _post = post;
+    self.imageView.file = post[@"image"];
+    self.captionLabel.text = post[@"caption"];
+    [self.imageView loadInBackground];
+    
 }
 
 @end

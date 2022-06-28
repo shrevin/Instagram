@@ -14,6 +14,7 @@
 @interface HomeViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (strong, nonatomic) NSArray *postsArray;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) UIRefreshControl *refreshControl;
 
 @end
 
@@ -21,16 +22,21 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    //self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    // Do any additional setup after loading the view.
     [self request];
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(request) forControlEvents:UIControlEventValueChanged];
+    [self.tableView insertSubview:self.refreshControl atIndex:0];
+    // Do any additional setup after loading the view.
+
     
 }
 
 - (void) request {
     PFQuery *query = [PFQuery queryWithClassName:@"Post"];
+    [query orderByDescending:@"createdAt"];
     query.limit = 20;
 
     // fetch data asynchronously
@@ -39,6 +45,7 @@
             // do something with the array of object returned by the call
             self.postsArray = posts;
             [self.tableView reloadData];
+            [self.refreshControl endRefreshing];
         } else {
             NSLog(@"%@", error.localizedDescription);
         }
@@ -50,7 +57,6 @@
         // PFUser.current() will now be nil
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         LoginViewController *loginVC = [storyboard instantiateViewControllerWithIdentifier:@"loginVC"];
-        
         self.view.window.rootViewController = loginVC;
     }];
     
@@ -66,8 +72,9 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     postCell *cell = [tableView dequeueReusableCellWithIdentifier:@"post"];
-    cell.captionLabel.text = self.postsArray[indexPath.row][@"caption"];
-    //cell.imageView.file = self.postsArray[indexPath.row][@"image"];
+    cell.post = self.postsArray[indexPath.row];
+//    cell.captionLabel.text = self.postsArray[indexPath.row][@"caption"];
+//    cell.imageView.file = self.postsArray[indexPath.row][@"image"];
     return cell;
 }
 

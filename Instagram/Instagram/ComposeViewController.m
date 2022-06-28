@@ -17,7 +17,9 @@
 
 @implementation ComposeViewController
 - (IBAction)clickCancel:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
+
 
 - (IBAction)clickShare:(id)sender {
     UIImage *image = self.imageView.image;
@@ -80,7 +82,7 @@
     // Do something with the images (based on your use case)
     
     // Dismiss UIImagePickerController to go back to your original view controller
-//    [self dismissViewControllerAnimated:YES completion:nil];
+   [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 
