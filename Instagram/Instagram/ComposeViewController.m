@@ -23,6 +23,7 @@
 
 - (IBAction)clickShare:(id)sender {
     UIImage *image = self.imageView.image;
+    // completion block returns boolean and error object
     [Post postUserImage:image withCaption:self.captionField.text withCompletion:^(BOOL succeeded, NSError *error) {
         if (error == nil) {
             NSLog(@"SUCCESSFULLY SAVED IMAGE");
@@ -30,6 +31,8 @@
             NSLog(@"did not save image");
         }
     }];
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
 
 }
 

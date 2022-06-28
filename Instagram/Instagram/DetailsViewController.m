@@ -6,8 +6,14 @@
 //
 
 #import "DetailsViewController.h"
+#import <Parse/Parse.h>
+#import "PFImageView.h"
 
 @interface DetailsViewController ()
+@property (strong, nonatomic) IBOutlet UILabel *timeLabel;
+@property (strong, nonatomic) IBOutlet UILabel *captionLabel;
+@property (strong, nonatomic) IBOutlet PFImageView *detailsImageView;
+
 
 @end
 
@@ -16,6 +22,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.captionLabel.text = self.my_post[@"caption"];
+    self.detailsImageView.file = self.my_post[@"image"];
+    [self.detailsImageView loadInBackground];
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"MMM d, yyyy"];
+    NSDate *dte = [dateFormat stringFromDate:self.my_post.createdAt];
+    self.timeLabel.text = [NSString stringWithFormat:@"%@", dte];
 }
 
 /*

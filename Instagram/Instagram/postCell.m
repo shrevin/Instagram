@@ -25,7 +25,7 @@
     _post = post;
     self.imageView.file = post[@"image"];
     self.captionLabel.text = post[@"caption"];
-    [self.imageView loadInBackground];
+    [self.imageView loadInBackground]; // loads image into the PFImageView
     
 }
 

@@ -31,8 +31,9 @@
     newPost.caption = caption;
     newPost.likeCount = @(0);
     newPost.commentCount = @(0);
+    //newPost.createdAt = ;
     
-    [newPost saveInBackgroundWithBlock: completion];
+    [newPost saveInBackgroundWithBlock: completion]; // sends this to Parse to save in the database
 }
 
 + (PFFileObject *)getPFFileFromImage: (UIImage * _Nullable)image {
