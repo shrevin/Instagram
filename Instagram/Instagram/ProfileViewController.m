@@ -13,7 +13,7 @@
 
 
 
-@interface ProfileViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
+@interface ProfileViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 @property (strong, nonatomic) IBOutlet PFImageView *profilePicImage;
 
 @property (strong, nonatomic) IBOutlet UIButton *addProfileButton;
@@ -21,6 +21,7 @@
 @property (strong, nonatomic) PFUser *user;
 @property (strong, nonatomic) NSArray *feed;
 @property (strong, nonatomic) IBOutlet UILabel *userLabel;
+@property (strong, nonatomic) IBOutlet UICollectionViewFlowLayout *flowLayout;
 
 @end
 
@@ -45,13 +46,17 @@
     // Do any additional setup after loading the view.
 }
 
-//- (void)viewDidLayoutSubviews {
-//   [super viewDidLayoutSubviews];
-//
-//
-//}
+- (void)viewDidLayoutSubviews {
+   [super viewDidLayoutSubviews];
+    //self.flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+//       self.flowLayout.minimumLineSpacing = 0;
+//       self.flowLayout.minimumInteritemSpacing = 0;
+//       self.flowLayout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 10);
+
+}
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
+    
     int totalwidth = self.collectionView.bounds.size.width;
     int numberOfCellsPerRow = 3;
     //int oddEven = indexPath.row / numberOfCellsPerRow % 2;
