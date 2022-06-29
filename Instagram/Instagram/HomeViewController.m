@@ -12,6 +12,7 @@
 #import "postCell.h"
 #import "DetailsViewController.h"
 #import "Post.h"
+#import "DateTools.h"
 
 @interface HomeViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (strong, nonatomic) NSArray *postsArray;
@@ -63,12 +64,7 @@
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         LoginViewController *loginVC = [storyboard instantiateViewControllerWithIdentifier:@"loginVC"];
         self.view.window.rootViewController = loginVC; // resetting root view controlelr
-        // [self.navigationController.tabBarController dismissViewControllerAnimated: YES completion: nil]
     }];
-    
-//    SceneDelegate *del = (SceneDelegate *)self.view.window.windowScene.delegate;
-//    del.window.rootViewController = loginVC;
-//    //[self presentViewController:loginVC animated:YES completion:nil];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -80,7 +76,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 30;
+    return 40;
 }
 
 
@@ -95,23 +91,24 @@
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
     UITableViewHeaderFooterView *footer = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"my_footer"];
     Post *post = self.postsArray[section];
-    PFUser *user = post.author;
-    NSLog(user.username);
-    
-    //footer.textLabel.text = user.username;
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateFormat:@"MMM d, yyyy"];
     NSString *date = [dateFormat stringFromDate:post.createdAt];
     //NSString *date = [NSString stringWithFormat:@"%@", dte];
-    footer.textLabel.text = date;
+    footer.textLabel.text = [[post.createdAt shortTimeAgoSinceNow] stringByAppendingString:@" ago"];
+    footer.textLabel.font = [UIFont systemFontOfSize:10.0];
     return footer;
 }
+
+
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     UITableViewHeaderFooterView *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"my_header"];
     Post *post = self.postsArray[section];
     PFUser *user = post.author;
     header.textLabel.text = user.username;
+    header.textLabel.textColor = [UIColor blackColor];
+    [header.textLabel setFont:[UIFont boldSystemFontOfSize:16]];
     return header;
 }
 

@@ -24,7 +24,8 @@
 - (IBAction)clickShare:(id)sender {
     UIImage *image = self.imageView.image;
     // completion block returns boolean and error object
-    [Post postUserImage:image withCaption:self.captionField.text withCompletion:^(BOOL succeeded, NSError *error) {
+    UIImage *resized = [self resizeImage:image withSize:CGSizeMake(300, 300)];
+    [Post postUserImage:resized withCaption:self.captionField.text withCompletion:^(BOOL succeeded, NSError *error) {
         if (error == nil) {
             NSLog(@"SUCCESSFULLY SAVED IMAGE");
         } else {
@@ -40,7 +41,26 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self.captionField.layer setBorderColor:[[[UIColor grayColor] colorWithAlphaComponent:0.5] CGColor]];
+    [self.captionField.layer setBorderWidth:0.5];
+    self.captionField.layer.cornerRadius = 5;
+
     
+    
+}
+
+- (UIImage *)resizeImage:(UIImage *)image withSize:(CGSize)size {
+    UIImageView *resizeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)];
+    
+    resizeImageView.contentMode = UIViewContentModeScaleAspectFill;
+    resizeImageView.image = image;
+    
+    UIGraphicsBeginImageContext(size);
+    [resizeImageView.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return newImage;
 }
 
 - (IBAction)clickLibrary:(id)sender {
