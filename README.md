@@ -46,7 +46,18 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+Some of the Core Features:
+
+![](https://github.com/shrevin/Instagram/blob/main/most%20of%20the%20core%20features.gif)
+
+Taking a Photo with Phone Camera:
+
+![](https://github.com/shrevin/Instagram/blob/main/taking%20the%20photo.gif)
+
+Logging In and Signing Out:
+
+![](https://github.com/shrevin/Instagram/blob/main/logging%20in%20and%20signing%20out.gif)
+
 
 GIF created with [Kap](https://getkap.co/).
 
