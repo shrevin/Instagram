@@ -51,7 +51,7 @@ Here's a walkthrough of implemented user stories:
 
 Some of the Core Features:
 
-![](https://github.com/shrevin/Instagram/blob/main/most%20of%20the%20core%20features.gif)
+<img src=https://github.com/shrevin/Instagram/blob/main/most%20of%20the%20core%20features.gif  width="193" height="130">
 
 Taking a Photo with Phone Camera:
 
