@@ -32,7 +32,6 @@
     [self alertEmptyUsername];
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-   
 }
 
 /*
@@ -44,6 +43,7 @@
     // Pass the selected object to the new view controller.
 }
 */
+
 
 - (void) alertEmptyUsername {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Missing Username" message:@"Please enter a username" preferredStyle:(UIAlertControllerStyleAlert)];
@@ -100,12 +100,22 @@
 }
 
 - (void)loginUser {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Not a registered user" message:@"Please sign up" preferredStyle:(UIAlertControllerStyleAlert)];
+    // create an OK action
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
+                                                       style:UIAlertActionStyleDefault
+                                                     handler:^(UIAlertAction * _Nonnull action) {
+                                                             // handle response here.
+                                                     }];
+    // add the OK action to the alert controller
+    [alert addAction:okAction];
     NSString *username = self.usernameField.text;
     NSString *password = self.passwordField.text;
     
     [PFUser logInWithUsernameInBackground:username password:password block:^(PFUser * user, NSError *  error) {
         if (error != nil) {
             NSLog(@"User log in failed: %@", error.localizedDescription);
+            [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:alert animated:YES completion:^{}];
         } else {
             NSLog(@"User logged in successfully");
 
@@ -113,6 +123,7 @@
             [self performSegueWithIdentifier:@"segueFromLoginPage" sender:self];
         }
     }];
+    [self.view endEditing:YES];
 }
 
 @end

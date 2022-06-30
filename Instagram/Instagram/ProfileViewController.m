@@ -30,6 +30,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.collectionView reloadData];
     self.profilePicImage.layer.cornerRadius  = self.profilePicImage.frame.size.width/2;
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
@@ -44,6 +45,11 @@
    
     //self.profilePicImage.clipsToBounds = YES;
     // Do any additional setup after loading the view.
+}
+
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self request];
 }
 
 - (void)viewDidLayoutSubviews {
