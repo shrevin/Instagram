@@ -13,6 +13,7 @@
 #import "DetailsViewController.h"
 #import "Post.h"
 #import "DateTools.h"
+#import "CommentsViewController.h"
 
 @interface HomeViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (strong, nonatomic) NSArray *postsArray;
@@ -93,7 +94,7 @@
     Post *post = self.postsArray[section];
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateFormat:@"MMM d, yyyy"];
-    NSString *date = [dateFormat stringFromDate:post.createdAt];
+    //NSString *date = [dateFormat stringFromDate:post.createdAt];
     //NSString *date = [NSString stringWithFormat:@"%@", dte];
     footer.textLabel.text = [[post.createdAt shortTimeAgoSinceNow] stringByAppendingString:@" ago"];
     footer.textLabel.font = [UIFont systemFontOfSize:10.0];
@@ -128,6 +129,11 @@
         DetailsViewController *detailsVC = [segue destinationViewController];
         detailsVC.my_post = self.postsArray[indexPath.section];
         //detailsVC.my_post = cell.post;
+    } else if ([segue.identifier isEqual:@"comment"]) {
+        CommentsViewController *commentVC = [segue destinationViewController];
+        UIView *contentView = (UIView *)[(UIView *)sender superview];
+        postCell *cell = (postCell *)[contentView superview];
+        commentVC.my_cell = cell;
     }
 }
 

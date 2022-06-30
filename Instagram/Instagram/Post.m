@@ -34,6 +34,7 @@
     newPost.caption = caption;
     newPost.likeCount = @(0);
     newPost.commentCount = @(0);
+    newPost.commentsArray = [[NSArray alloc] init];
     //newPost.createdAt = ;
     
     [newPost saveInBackgroundWithBlock: completion]; // sends this to Parse to save in the database

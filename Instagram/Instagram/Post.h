@@ -11,6 +11,7 @@
 @property (nonatomic, strong) NSNumber *likeCount;
 @property (nonatomic, strong) NSNumber *commentCount;
 @property (strong, nonatomic) NSDate *createdAt;
+@property (strong, nonatomic) NSArray *commentsArray;
 
 // takes a caption and an image associated with post and creates a post object, populates it with your image and caption, and calls saveInBackgroundWithBlock to save post in Parse
 + (void) postUserImage: ( UIImage * _Nullable )image withCaption: ( NSString * _Nullable )caption withCompletion: (PFBooleanResultBlock  _Nullable)completion;
