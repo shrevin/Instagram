@@ -55,12 +55,11 @@ Some of the Core Features:
 
 Taking a Photo with Phone Camera:
 
-![](https://github.com/shrevin/Instagram/blob/main/taking%20the%20photo.gif)
+<img src=https://github.com/shrevin/Instagram/blob/main/taking%20the%20photo.gif  width="400" height="800">
 
 Logging In and Signing Out:
 
-![](https://github.com/shrevin/Instagram/blob/main/logging%20in%20and%20signing%20out.gif)
-
+<img src=https://github.com/shrevin/Instagram/blob/main/logging%20in%20and%20signing%20out.gif  width="400" height="800">
 
 GIF created ezgif.
 
