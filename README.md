@@ -2,7 +2,7 @@
 
 **Instagram** is a photo sharing app using Parse as its backend.
 
-Time spent: **X** hours spent in total
+Time spent: **35** hours spent in total
 
 ## User Stories
 
@@ -37,18 +37,31 @@ The following **additional** features are implemented:
 
 - [ ] List anything else that you can get done to improve the app functionality!
 
+- Adding a way for the user to like and comment on the posts
+- Adding a way to message another user
+
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
-1.
-2.
+1. I would like to explore how to edit objects in the database such as adding to an array.
+2. I would like to learn more about how to create a new database object to monitor the number of likes and which user liked what post.
 
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+Some of the Core Features:
 
-GIF created with [Kap](https://getkap.co/).
+<img src=https://github.com/shrevin/Instagram/blob/main/most%20of%20the%20core%20features.gif  width="400" height="800">
+
+Taking a Photo with Phone Camera:
+
+<img src=https://github.com/shrevin/Instagram/blob/main/taking%20the%20photo.gif  width="400" height="800">
+
+Logging In and Signing Out:
+
+<img src=https://github.com/shrevin/Instagram/blob/main/logging%20in%20and%20signing%20out.gif  width="400" height="800">
+
+GIF created ezgif.
 
 ## Credits
 
@@ -59,6 +72,8 @@ List an 3rd party libraries, icons, graphics, or other assets you used in your a
 ## Notes
 
 Describe any challenges encountered while building the app.
+
+Some challenges I faced included figuring out how to modify the profile picture of the user by adding an image attribute in the database. I also had trouble with the flow layout of the collection view cell and specifying how large the size of the cell should be relative to the width of the screen.
 
 ## License
 
