@@ -41,10 +41,6 @@
         self.profilePicImage.file = self.user[@"imageFile"];
         [self.profilePicImage loadInBackground];
     }
-    
-   
-    //self.profilePicImage.clipsToBounds = YES;
-    // Do any additional setup after loading the view.
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -54,25 +50,14 @@
 
 - (void)viewDidLayoutSubviews {
    [super viewDidLayoutSubviews];
-    //self.flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-//       self.flowLayout.minimumLineSpacing = 0;
-//       self.flowLayout.minimumInteritemSpacing = 0;
-//       self.flowLayout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 10);
-
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     
     int totalwidth = self.collectionView.bounds.size.width;
     int numberOfCellsPerRow = 3;
-    //int oddEven = indexPath.row / numberOfCellsPerRow % 2;
     int dimensions = (CGFloat)(totalwidth / numberOfCellsPerRow) - 10;
     return CGSizeMake(dimensions, dimensions);
-//    if (oddEven == 0) {
-//        return CGSizeMake(dimensions, dimensions);
-//    } else {
-//        return CGSizeMake(dimensions, dimensions / 2);
-//    }
 }
 
 - (IBAction)clickPhoto:(id)sender {
@@ -95,7 +80,6 @@
     imagePickerVC.delegate = self;
     imagePickerVC.allowsEditing = YES;
     imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-
     [self presentViewController:imagePickerVC animated:YES completion:nil];
 }
 
@@ -111,9 +95,7 @@
     } else {
         self.profilePicImage.image = originalImage;
     }
-    
-    // Do something with the images (based on your use case)
-    
+        
     // Dismiss UIImagePickerController to go back to your original view controller
     PFUser *user = [PFUser currentUser];
     NSData *imageData = UIImagePNGRepresentation(self.profilePicImage.image);

@@ -26,33 +26,14 @@
 + (void) postUserImage: ( UIImage * _Nullable )image withCaption: ( NSString * _Nullable )caption withCompletion: (PFBooleanResultBlock  _Nullable)completion {
     
     Post *newPost = [Post new];
-    //UIImage *resized = [self resizeImage:image withSize:CGSizeMake(300, 300)];
     newPost.image = [self getPFFileFromImage:image];
-    //CGSize *size = [CGSize valueWithCGSize:(CGSizeMake(300, 300))];
-    //UIImage *resized = [self resizeImage:image withSize:]
     newPost.author = [PFUser currentUser];
     newPost.caption = caption;
     newPost.likeCount = @(0);
     newPost.commentCount = @(0);
-    newPost.commentsArray = [[NSArray alloc] init];
-    //newPost.createdAt = ;
-    
+    newPost.commentsArray = [[NSArray alloc] init];    
     [newPost saveInBackgroundWithBlock: completion]; // sends this to Parse to save in the database
 }
-
-//- (UIImage *)resizeImage:(UIImage *)image withSize:(CGSize)size {
-//    UIImageView *resizeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)];
-//
-//    resizeImageView.contentMode = UIViewContentModeScaleAspectFill;
-//    resizeImageView.image = image;
-//
-//    UIGraphicsBeginImageContext(size);
-//    [resizeImageView.layer renderInContext:UIGraphicsGetCurrentContext()];
-//    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
-//    UIGraphicsEndImageContext();
-//
-//    return newImage;
-//}
 
 + (PFFileObject *)getPFFileFromImage: (UIImage * _Nullable)image {
  

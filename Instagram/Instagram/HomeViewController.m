@@ -84,8 +84,6 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     postCell *cell = [tableView dequeueReusableCellWithIdentifier:@"post"];
     cell.post = self.postsArray[indexPath.section];
-//    cell.captionLabel.text = self.postsArray[indexPath.row][@"caption"];
-//    cell.imageView.file = self.postsArray[indexPath.row][@"image"];
     return cell;
 }
 
@@ -94,8 +92,6 @@
     Post *post = self.postsArray[section];
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateFormat:@"MMM d, yyyy"];
-    //NSString *date = [dateFormat stringFromDate:post.createdAt];
-    //NSString *date = [NSString stringWithFormat:@"%@", dte];
     footer.textLabel.text = [[post.createdAt shortTimeAgoSinceNow] stringByAppendingString:@" ago"];
     footer.textLabel.font = [UIFont systemFontOfSize:10.0];
     return footer;
@@ -128,7 +124,6 @@
         NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
         DetailsViewController *detailsVC = [segue destinationViewController];
         detailsVC.my_post = self.postsArray[indexPath.section];
-        //detailsVC.my_post = cell.post;
     } else if ([segue.identifier isEqual:@"comment"]) {
         CommentsViewController *commentVC = [segue destinationViewController];
         UIView *contentView = (UIView *)[(UIView *)sender superview];

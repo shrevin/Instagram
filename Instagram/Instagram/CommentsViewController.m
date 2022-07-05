@@ -22,23 +22,10 @@
     // Do any additional setup after loading the view.
     
 }
+// EXTRA FEATURE TO BE COMPLETED
 - (IBAction)clickComment:(id)sender {
     //self.my_cell.post.commentsArray.add(self.commentView.text);
     PFObject *p = [PFObject objectWithClassName:@"Post"];
-    //ParseQuery<ParseObject> query = ParseQuery.getQuery("Post");
-    // Retrieve the object by id
-    //query.getInBackground(self.my_cell.post.postID, new GetCallback<ParseObject>() {
-//    PFQuery *query = [PFQuery queryWithClassName:@"Post"];
-//    [query whereKey:@"objectId" equalTo:self.my_cell.post.postID];
-//    [query findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
-//        if (posts != nil) {
-//            // do something with the array of object returned by the call
-//            Post *p = posts[0];
-//            p[@"commentsArray"].add(self.commentView.text);
-//        } else {
-//            NSLog(@"%@", error.localizedDescription);
-//        }
-//    }];
 }
 
 /*
